@@ -14,12 +14,13 @@ The repository has been tested in Ubuntu 18.04 with ROS Melodic and Ubuntu 
 
 To setup FAR Planner, clone the repository.
 ```
-git clone https://github.com/MichaelFYang/far_planner
+git clone git@github.com:olusis-rs/far_planner.git
 ```
 In a terminal, go to the folder and compile.
 ```
+NOT - IMPLEMENTED YET!!
 cd far_planner
-catkin_make
+colcon build
 ```
 To run the code, go to the development environment folder in a terminal, source the ROS workspace, and launch.
 ```
@@ -47,13 +48,13 @@ Anytime during the navigation, users can use the control panel to navigate the v
 
 To launch with a different environment, use the command lines below and replace '\<environment\>' with one of the environment names in the development environment, i.e. 'campus', 'indoor', 'garage', 'tunnel', and 'forest'. Note that when running in campus environment, set *checkTerrainConn* to true in system_campus.launch in the 'src/vehicle_simulator/launch' folder of the development environment.
 ```
-roslaunch vehicle_simulator system_<environment>.launch
-roslaunch far_planner far_planner.launch
+ros2 launch vehicle_simulator system_<environment>.launch
+ros2 launch far_planner far_planner.launch
 ```
 To run FAR Planner in a [Matterport3D](https://niessner.github.io/Matterport) environment, follow instructions on the development environment page to setup the Matterport3D environment. Then, use the command lines below to launch the system and FAR Planner.
 ```
-roslaunch vehicle_simulator system_matterport.launch
-roslaunch far_planner far_planner.launch config:=matterport
+ros2 launch vehicle_simulator system_matterport.launch
+ros2 launch far_planner far_planner.launch config:=matterport
 ```
 
 <p align="center">

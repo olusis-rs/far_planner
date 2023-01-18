@@ -17,3 +17,6 @@ logs
 .DS_Store
 
 src/dynamic_router_planner/contour_test/*.out
+*.swp
+
+*/**/log

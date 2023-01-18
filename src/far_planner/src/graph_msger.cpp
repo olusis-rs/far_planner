@@ -31,7 +31,7 @@ void GraphMsger::EncodeGraph(const NodePtrStack& graphIn, visibility_graph_msg::
         msg_node.header.frame_id = frame_id;
         msg_node.position    = FARUtil::Point3DToGeoMsgPoint(node_ptr->position);
         msg_node.id          = node_ptr->id;
-        msg_node.FreeType    = static_cast<int>(node_ptr->free_direct);
+        msg_node.free_type    = static_cast<int>(node_ptr->free_direct);
         msg_node.is_covered  = node_ptr->is_covered;
         msg_node.is_frontier = node_ptr->is_frontier;
         msg_node.is_navpoint = node_ptr->is_navpoint;
@@ -185,7 +185,7 @@ void GraphMsger::CreateDecodedNavNode(const visibility_graph_msg::Node& vnode, N
     const PointPair surf_pair = {Point3D(vnode.surface_dirs[0].x, vnode.surface_dirs[0].y, vnode.surface_dirs[0].z),
                                  Point3D(vnode.surface_dirs[1].x, vnode.surface_dirs[1].y, vnode.surface_dirs[1].z)};
     // surf directions
-    node_ptr->free_direct = static_cast<NodeFreeDirect>(vnode.FreeType);
+    node_ptr->free_direct = static_cast<NodeFreeDirect>(vnode.free_type);
     node_ptr->surf_dirs = surf_pair;
     const std::deque<PointPair> surf_queue(gm_params_.pool_size, surf_pair);
     node_ptr->surf_dirs_vec = surf_queue;

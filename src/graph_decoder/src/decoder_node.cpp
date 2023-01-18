@@ -75,7 +75,7 @@ void GraphDecoder::CreateNavNode(const visibility_graph_msg::Node& msg,
     node_ptr = std::make_shared<NavNode>();
     node_ptr->position = Point3D(msg.position.x, msg.position.y, msg.position.z);
     node_ptr->id = msg.id;
-    node_ptr->free_direct = static_cast<NodeFreeDirect>(msg.FreeType);
+    node_ptr->free_direct = static_cast<NodeFreeDirect>(msg.free_type);
     if (msg.surface_dirs.size() != 2) {
         ROS_ERROR_THROTTLE(1.0, "node surface directions error.");
         node_ptr->surf_dirs.first = node_ptr->surf_dirs.second = Point3D(0,0,-1);
@@ -250,7 +250,7 @@ void GraphDecoder::EncodeGraph(const NodePtrStack& graphIn, visibility_graph_msg
         msg_node.header.frame_id = frame_id;
         msg_node.position    = ToGeoMsgP(node_ptr->position);
         msg_node.id          = node_ptr->id;
-        msg_node.FreeType    = static_cast<int>(node_ptr->free_direct);
+        msg_node.free_type    = static_cast<int>(node_ptr->free_direct);
         msg_node.is_covered  = node_ptr->is_covered;
         msg_node.is_frontier = node_ptr->is_frontier;
         msg_node.is_navpoint = node_ptr->is_navpoint;

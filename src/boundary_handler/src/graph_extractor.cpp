@@ -291,7 +291,7 @@ void GraphExtractor::EncodeGraph(const NodePtrStack& graphIn, visibility_graph_m
         msg_node.header.frame_id = frame_id;
         msg_node.position    = ToGeoMsgP(node_ptr->position);
         msg_node.id          = node_ptr->id;
-        msg_node.FreeType    = static_cast<int>(node_ptr->free_direct);
+        msg_node.free_type    = static_cast<int>(node_ptr->free_direct);
         msg_node.is_covered  = node_ptr->is_covered;
         msg_node.is_frontier = node_ptr->is_frontier;
         msg_node.is_navpoint = node_ptr->is_navpoint;
